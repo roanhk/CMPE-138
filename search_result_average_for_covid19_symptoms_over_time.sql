@@ -2,19 +2,19 @@
 SELECT
   date,
   country_name,
-  AVG(search_trends_fever) AS fever,
-  AVG(search_trends_chills) AS chills,
-  AVG(search_trends_cough) AS cough,
-  AVG(search_trends_shortness_of_breath) AS shortness_of_breath,
-  AVG(search_trends_sore_throat) AS sore_throat,
-  AVG(search_trends_anosmia) AS loss_of_smell,
-  AVG(search_trends_ageusia) AS loss_of_taste,
-  AVG(search_trends_fatigue) AS fatigue,
-  AVG(search_trends_myalgia) AS muscle_or_body_aches,
-  AVG(search_trends_headache) AS headache,
-  AVG(search_trends_nausea) AS nausua,
-  AVG(search_trends_vomiting) AS vomiting,
-  AVG(search_trends_diarrhea) AS diarrhea,
+  ROUND(AVG(search_trends_fever), 3) AS fever,
+  ROUND(AVG(search_trends_chills), 3) AS chills,
+  ROUND(AVG(search_trends_cough), 3) AS cough,
+  ROUND(AVG(search_trends_shortness_of_breath), 3) AS shortness_of_breath,
+  ROUND(AVG(search_trends_sore_throat), 3) AS sore_throat,
+  ROUND(AVG(search_trends_anosmia), 3) AS loss_of_smell,
+  ROUND(AVG(search_trends_ageusia), 3) AS loss_of_taste,
+  ROUND(AVG(search_trends_fatigue), 3) AS fatigue,
+  ROUND(AVG(search_trends_myalgia), 3) AS muscle_or_body_aches,
+  ROUND(AVG(search_trends_headache), 3) AS headache,
+  ROUND(AVG(search_trends_nausea), 3) AS nausea,
+  ROUND(AVG(search_trends_vomiting), 3) AS vomiting,
+  ROUND(AVG(search_trends_diarrhea), 3) AS diarrhea
 FROM `bigquery-public-data.covid19_open_data.covid19_open_data`
 WHERE
   country_name = 'United States of America' -- insert country name
@@ -25,19 +25,19 @@ ORDER BY date ASC;
 -- Search Result Average for COVID-19 Symptoms Over Time: (Worldwide)
 SELECT
   date,
-  AVG(search_trends_fever) AS fever,
-  AVG(search_trends_chills) AS chills,
-  AVG(search_trends_cough) AS cough,
-  AVG(search_trends_shortness_of_breath) AS shortness_of_breath,
-  AVG(search_trends_sore_throat) AS sore_throat,
-  AVG(search_trends_anosmia) AS loss_of_smell,
-  AVG(search_trends_ageusia) AS loss_of_taste,
-  AVG(search_trends_fatigue) AS fatigue,
-  AVG(search_trends_myalgia) AS muscle_or_body_aches,
-  AVG(search_trends_headache) AS headache,
-  AVG(search_trends_nausea) AS nausua,
-  AVG(search_trends_vomiting) AS vomiting,
-  AVG(search_trends_diarrhea) AS diarrhea,
+  ROUND(AVG(search_trends_fever), 3) AS fever,
+  ROUND(AVG(search_trends_chills), 3) AS chills,
+  ROUND(AVG(search_trends_cough), 3) AS cough,
+  ROUND(AVG(search_trends_shortness_of_breath), 3) AS shortness_of_breath,
+  ROUND(AVG(search_trends_sore_throat), 3) AS sore_throat,
+  ROUND(AVG(search_trends_anosmia), 3) AS loss_of_smell,
+  ROUND(AVG(search_trends_ageusia), 3) AS loss_of_taste,
+  ROUND(AVG(search_trends_fatigue), 3) AS fatigue,
+  ROUND(AVG(search_trends_myalgia), 3) AS muscle_or_body_aches,
+  ROUND(AVG(search_trends_headache), 3) AS headache,
+  ROUND(AVG(search_trends_nausea), 3) AS nausea,
+  ROUND(AVG(search_trends_vomiting), 3) AS vomiting,
+  ROUND(AVG(search_trends_diarrhea), 3) AS diarrhea
 FROM `bigquery-public-data.covid19_open_data.covid19_open_data`
 WHERE
   date BETWEEN '2020-01-01' AND '2023-5-31' -- insert time period
