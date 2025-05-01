@@ -1,3 +1,12 @@
+/*-- Unoptimized version of this query
+SELECT *
+FROM `bigquery-public-data.covid19_open_data.covid19_open_data`
+WHERE population IS NOT NULL
+ORDER BY health_expenditure_usd * population DESC
+LIMIT 15;
+*/
+
+
 SELECT
   country_name,
   country_code,
