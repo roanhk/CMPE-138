@@ -1,27 +1,29 @@
-WITH latest_vax AS (
+WITH latest_deaths AS (
   SELECT
     country_name,
-    cumulative_persons_vaccinated,
+    cumulative_deceased,
     population,
     date,
     ROW_NUMBER() OVER (PARTITION BY country_name ORDER BY date DESC) AS rn
   FROM
     `bigquery-public-data.covid19_open_data.covid19_open_data`
   WHERE
-    cumulative_persons_vaccinated IS NOT NULL
-    AND population IS NOT NULL
+    population IS NOT NULL
+    AND cumulative_deceased IS NOT NULL
+    AND subregion1_name IS NULL    
+    AND population > 50000000          
 )
 
 SELECT
   country_name,
-  date,
-  cumulative_persons_vaccinated,
   population,
-  ROUND(cumulative_persons_vaccinated / population * 100, 2) AS vaccination_rate
+  cumulative_deceased,
+  ROUND(SAFE_DIVIDE(cumulative_deceased, population) * 100000, 2) AS deaths_per_100k,
+  date
 FROM
-  latest_vax
+  latest_deaths
 WHERE
   rn = 1
 ORDER BY
-  vaccination_rate DESC
+  cumulative_deceased DESC
 LIMIT 10;
