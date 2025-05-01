@@ -6,7 +6,7 @@ ORDER BY health_expenditure_usd * population DESC
 LIMIT 15;
 */
 
-
+-- Query to extrat max spend by top countires based on their population 
 SELECT
   country_name,
   country_code,

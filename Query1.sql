@@ -1,4 +1,17 @@
+/* Unoptimized version 
+SELECT
+  *
+FROM
+  `bigquery-public-data.covid19_open_data.covid19_open_data`
+WHERE
+  population IS NOT NULL
+ORDER BY
+  cumulative_deceased DESC
+LIMIT 15;
+*/
 
+
+-- Queries to show most affted countries with max death for top populated countries and death of age group below 10 
 SELECT
   MAX(country_name) AS country_name,
   country_code,
